@@ -1,3 +1,4 @@
+*{box-sizing: border-box;}
 html {
   height: 100%;
 }
@@ -9,42 +10,93 @@ body {
   color: white;
   height: 100%;
 }
+.wrap{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.filter{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.2);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  pointer-events: none;
+}
+.album-container {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container-wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 8px;
+  overflow: hidden;
+  z-index: 10;
+}
+.container{
+  display: flex;
+  width: 131%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  box-sizing: border-box;
+}
+.album{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  z-index: 5;
+}
+.box {
+  flex: 1;
+  height: 100%;
+  scale: 1 0;
+  background-color: rgba(240, 248, 255 , 0.8);
+}
 .annotation {
   position: absolute;
-  bottom: 32px;
-  left: 32px;
-  width: calc(100% - 198px);
+  width: 100%;
+  bottom: -70px;
+  left: 50%;
+  transform: translate(-50%, 0);
   -webkit-user-select: none;
   user-select: none;
   pointer-events: none;
+  z-index: 5;
 }
 audio{
   position: absolute;
   bottom: 30px;
   left: 50%;
-}
-@media (width < 768px) {
-  .annotation {
-    bottom: 8px;
-    left: 8px;
-  }
-}
-
-.annotation h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 0;
-}
-@media (width < 768px) {
-  .annotation h1 {
-    font-size: 1.5rem;
-  }
+  z-index: 3;
 }
 .annotation p {
-  font-size: 1rem;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
   margin: 0;
 }
-
 button {
   appearance: none;
   border: none;
@@ -54,32 +106,54 @@ button {
   -webkit-user-select: none;
   user-select: none;
 }
-
-#btnPlay,
-#btnStop {
+#btnPlay,#btnStop{
+  position: relative;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  border-radius: 7px;
+  z-index: 20;
+  transition: 0.2s;
+  background-color: rgba(0,0,0,0.2);
+}
+#btnPlay:hover,#btnStop:hover{opacity: 1;}
+.btnPlay__span,
+.btnStop__span {
   position: absolute;
-  bottom: 32px;
-  right: 32px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 8px 0;
-  width: 128px;
-  border-radius: 32px;
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 60px;
   background: rgba(0, 0, 0, 0.25);
   color: white;
-  transition: 0.2s;
-  border: 1px solid #006edc;
+  border: none;
 }
-#btnPlay:hover,
+.btnPlay__span::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-40%, -50%);
+  border: 15px solid transparent;
+  border-left: 25px solid aliceblue;
+}
+.btnStop__span::before,.btnStop__span::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 30px;
+  background-color: aliceblue;
+}
+.btnStop__span::before{left: 38%;}
+.btnStop__span::after{left: 62%;}
+
+/* #btnPlay:hover,
 #btnStop:hover {
-  box-shadow: #0777f5ff 0px 0px 10px 0px, #367ce47f 0px 0px 20px 0px;
-}
-@media (width < 768px) {
-  #btnPlay,
-  #btnStop {
-    width: 96px;
-    font-size: 1rem;
-    bottom: 8px;
-    right: 8px;
-  }
-}
+  box-shadow: #f0f8ff 0px 0px 10px 0px, #f0f8ff7f 0px 0px 20px 0px;
+} */
