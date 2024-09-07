@@ -4,7 +4,7 @@ musicsToTmp();
 function musicsToTmp(){
 	for(let i=1;i<=40;i++){
 		const _i = i;
-		musics[_i-1] = "./audio/music ("+_i+").mp3";
+		musics[_i-1] = "https://raw.githubusercontent.com//RyOkEeeesh/iri-SundVisualizer/main/audio/music%20("+_i+").mp3";
   }
 }
 function playAudio(j){
