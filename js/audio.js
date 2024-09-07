@@ -1,11 +1,10 @@
 let musics = [];
 const title = {"24-25":"sparkle","Best life":"sparkle","breaking dawn":"groove","brother":"groove","CAKE":"shade","Clear Color":"sparkle","Coaster":"sparkle","Come Away":"only","COME BACK TO MY CITY":"sparkle","Corner":"corner","DRAMA":"private","Flashlight":"shade","For life":"life","friends":"private","fruits":"life","Swamp":"swamp","Keep on trying":"shade","miracle":"sparkle","Only One":"only","rhythm":"groove","Roll":"private","Run":"run","Runaway":"sparkle","Season":"private","Shade":"shade","Sparkle":"sparkle","STARLIGHT":"private","stroll":"only","SUMMER END":"sparkle","Sway":"shade","Watashi":"watashi","Wonderland":"shade","はじまりの日":"hajimari","フェイバリット女子":"groove","渦":"uzu","会いたいわ":"life","言えない":"ienai","東へ西へ":"higashi","半端じゃない":"groove","飛行":"shade"};
-console.log(title)
 musicsToTmp();
 function musicsToTmp(){
 	for(let i=1;i<=40;i++){
 		const _i = i;
-		musics[_i-1] = "./audio/music ("+_i+").mp3";
+		musics[_i-1] = "../audio/music ("+_i+").mp3";
   }
 }
 function playAudio(j){
@@ -13,7 +12,7 @@ function playAudio(j){
   let = titleName = Object.keys(title)
   let n = musics.indexOf(rand_music[j])
   music_title.innerHTML = titleName[n];
-  let url = '../img/audio/'+title[titleName[n]]+'.jpg';
+  let url = 'https://raw.githubusercontent.com/RyOkEeeesh/iri-SundVisualizer/7ad8972e9adf8d9d6f5077775df2f1d48bd35dc8/img/audio/'+title[titleName[n]]+'.jpg';
   album.src = url;
   $('.wrap').css({"background-image": `url(${url})`,});
 }
