@@ -1,15 +1,8 @@
-
-/**
- * サウンドの再生UIを初期化します。
- * @param onClickFirstPlay {() => void}
- * @return {{audioElement: HTMLAudioElement}}
- */
 export function useUi(onClickFirstPlay) {
-  // 状態管理
   let isInited = false; // 初期化済か
   let isUserPlaying = false; // ユーザーが音量ON/OFFのどちらを選択したか
 
-  const audioElement = document.querySelector("#audio");
+  const audioElement = document.querySelector("audio");
 
   // -------------------------------------
   // 画面のUI処理
@@ -18,7 +11,6 @@ export function useUi(onClickFirstPlay) {
   btnPlay.addEventListener("click", () => {
     // ユーザーの意思をもって再生したことを記録
     isUserPlaying = true;
-
     playSound();
 
     if (isInited === false) {
@@ -32,9 +24,30 @@ export function useUi(onClickFirstPlay) {
   btnStop.addEventListener("click", () => {
     // ユーザーの意思をもって停止したことを記録
     isUserPlaying = false;
-
     stopSound();
   });
+
+  document.addEventListener('keypress',keypress_event)
+
+  let count = 0;
+  function keypress_event(e) {
+    if(e.code === 'Space'){
+      if(count % 2 == 0){
+        isUserPlaying = true;
+        playSound();
+        if (isInited === false) {
+          onClickFirstPlay();
+        }
+    
+        isInited = true;
+      }else if(count % 2 == 1){
+        isUserPlaying = false;
+        stopSound();
+      }
+    }
+    count ++;
+    return false; 
+  }
 
   // タブの切り替えでサウンドのON/OFFを切りかえる
   document.addEventListener("visibilitychange", () => {
@@ -54,13 +67,13 @@ export function useUi(onClickFirstPlay) {
 
   function playSound() {
     audioElement.play();
-    btnPlay.hidden = true;
-    btnStop.hidden = false;
+    btnPlay.style.display = "none";
+    btnStop.style.display = "block";
   }
   function stopSound() {
     audioElement.pause();
-    btnPlay.hidden = false;
-    btnStop.hidden = true;
+    btnPlay.style.display = "block";
+    btnStop.style.display = "none";
   }
 
   return { audioElement };

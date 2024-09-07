@@ -1,48 +1,26 @@
 let musics = [];
-const title = ["24-25","Best life","breaking dawn","brother","CAKE","Clear Color","Coaster","Come Away","COME BACK TO MY CITY","Corner","DRAMA","Flashlight","For life","friends","fruits","Swamp","Keep on trying","miracle","Only One","rhythm","Roll","Run","Runaway","Season","Shade","Sparkle","STARLIGHT","stroll","SUMMER END","Sway","Watashi","Wonderland","はじまりの日","フェイバリット女子","渦","会いたいわ","言えない","東へ西へ","半端じゃない","飛行"];
-
-loadAudioToTmp();
-function loadAudioToTmp(){
-	for(var i=1;i<=40;i++){
+const title = {"24-25":"sparkle","Best life":"sparkle","breaking dawn":"groove","brother":"groove","CAKE":"shade","Clear Color":"sparkle","Coaster":"sparkle","Come Away":"only","COME BACK TO MY CITY":"sparkle","Corner":"corner","DRAMA":"private","Flashlight":"shade","For life":"life","friends":"private","fruits":"life","Swamp":"swamp","Keep on trying":"shade","miracle":"sparkle","Only One":"only","rhythm":"groove","Roll":"private","Run":"run","Runaway":"sparkle","Season":"private","Shade":"shade","Sparkle":"sparkle","STARLIGHT":"private","stroll":"only","SUMMER END":"sparkle","Sway":"shade","Watashi":"watashi","Wonderland":"shade","はじまりの日":"hajimari","フェイバリット女子":"groove","渦":"uzu","会いたいわ":"life","言えない":"ienai","東へ西へ":"higashi","半端じゃない":"groove","飛行":"shade"};
+console.log(title)
+musicsToTmp();
+function musicsToTmp(){
+	for(let i=1;i<=40;i++){
 		const _i = i;
-		const music = new Audio();
 		musics[_i-1] = "./audio/music ("+_i+").mp3";
-		music.src = "./audio/music ("+_i+").mp3";
-		music.addEventListener("load",()=>{
-			musics[_i] = music;
-		});
+  }
 }
-}
-
-console.log(musics);
-console.log(musics.length);
-
-let randoms = [];
-let rand_music = [];
-MakeRandMusics();
-
-console.log(rand_music);
-
-let audio = document.querySelector('audio');
-audio.volume = 0.6;
-let music_title = document.getElementById('music-title')
-let j = 0;
-playAudio(j);
-j++;
-audio.addEventListener('ended', function() {
-audio.autoplay = true;
-playAudio(j);
-j++;
-});
-
 function playAudio(j){
   audio.src = rand_music[j];
-  music_title.innerHTML = title[musics.indexOf(rand_music[j])];
+  let = titleName = Object.keys(title)
+  let n = musics.indexOf(rand_music[j])
+  music_title.innerHTML = titleName[n];
+  let url = '../img/audio/'+title[titleName[n]]+'.jpg';
+  album.src = url;
+  $('.wrap').css({"background-image": `url(${url})`,});
 }
-
 function MakeRandMusics(){
-let min = 0, max = musics.length-1;
-for(i = min; i <= max; i++){
+  let randoms = [];
+  let min = 0, max = musics.length-1;
+  for(i = min; i <= max; i++){
     while(true){
       let tmp = intRandom(min, max);
       if(!randoms.includes(tmp)){
@@ -55,4 +33,34 @@ for(i = min; i <= max; i++){
   function intRandom(min, max){
     return Math.floor( Math.random() * (max - min + 1)) + min;
   }
+}
+
+const audio = document.querySelector('audio');
+const album = document.querySelector('#album')
+let rand_music = [];
+audio.volume = 0.4;
+let music_title = document.getElementById('music-title')
+let j = 0;
+if(j == false){
+  MakeRandMusics();
+  playAudio(j);
+  j++;
+}
+audio.addEventListener('ended', function() {
+audio.autoplay = true;
+playAudio(j);
+j++;
+if(j == musics.length){
+  j = 0;
+  MakeRandMusics();
+}
+});
+
+// // 再生時間を取得
+// audio.addEventListener('timeupdate', function() {
+// 	console.log(audio.currentTime);
+// });
+
+if(!window.localStorage){
+  console.log("aaaa")
 }
