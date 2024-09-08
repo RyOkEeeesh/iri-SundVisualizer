@@ -17,7 +17,7 @@ function playAudio(j){
   let = titleName = Object.keys(title)
   let n = musics.indexOf(rand_music[j])
   music_title.innerHTML = titleName[n];
-  let url = 'https://github.com/RyOkEeeesh/iri-SundVisualizer/blob/main/img/audio/corner.jpg?raw=true'+title[titleName[n]]+'.jpg';
+  let url = 'https://github.com/RyOkEeeesh/iri-SundVisualizer/blob/main/img/audio/'+title[titleName[n]]+'.jpg?raw=true';
   album.src = url;
   background.style.backgroundImage = "url('"+url+"')";
 }
