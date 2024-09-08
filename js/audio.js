@@ -1,5 +1,10 @@
-let musics = [];
+const musics = [];
 const title = {"24-25":"sparkle","Best life":"sparkle","breaking dawn":"groove","brother":"groove","CAKE":"shade","Clear Color":"sparkle","Coaster":"sparkle","Come Away":"only","COME BACK TO MY CITY":"sparkle","Corner":"corner","DRAMA":"private","Flashlight":"shade","For life":"life","friends":"private","fruits":"life","Swamp":"swamp","Keep on trying":"shade","miracle":"sparkle","Only One":"only","rhythm":"groove","Roll":"private","Run":"run","Runaway":"sparkle","Season":"private","Shade":"shade","Sparkle":"sparkle","STARLIGHT":"private","stroll":"only","SUMMER END":"sparkle","Sway":"shade","Watashi":"watashi","Wonderland":"shade","はじまりの日":"hajimari","フェイバリット女子":"groove","渦":"uzu","会いたいわ":"life","言えない":"ienai","東へ西へ":"higashi","半端じゃない":"groove","飛行":"shade"};
+const audio = document.querySelector('audio');
+const album = document.querySelector('#album');
+const background = document.querySelector('.wrap');
+const track = JSON.parse(localStorage.getItem("track"));
+
 musicsToTmp();
 function musicsToTmp(){
 	for(let i=1;i<=40;i++){
@@ -14,7 +19,7 @@ function playAudio(j){
   music_title.innerHTML = titleName[n];
   let url = '../img/audio/'+title[titleName[n]]+'.jpg';
   album.src = url;
-  $('.wrap').css({"background-image": `url(${url})`,});
+  background.style.backgroundImage = "url('"+url+"')";
 }
 function MakeRandMusics(){
   let randoms = [];
@@ -33,8 +38,6 @@ function MakeRandMusics(){
     return Math.floor( Math.random() * (max - min + 1)) + min;
   }
 }
-const audio = document.querySelector('audio');
-const album = document.querySelector('#album')
 let rand_music = [];
 audio.volume = 0.4;
 let music_title = document.getElementById('music-title')
@@ -53,6 +56,7 @@ if(j == musics.length){
   MakeRandMusics();
 }
 });
+
 // // 再生時間を取得
 // audio.addEventListener('timeupdate', function() {
 // 	console.log(audio.currentTime);
@@ -60,4 +64,8 @@ if(j == musics.length){
 
 if(!window.localStorage){
   console.log("aaaa")
+}else{
+  if(track){
+
+  }
 }
