@@ -1,12 +1,9 @@
 export function useUi(onClickFirstPlay) {
-  let isInited = false; // 初期化済か
-  let isUserPlaying = false; // ユーザーが音量ON/OFFのどちらを選択したか
-
+  let isInited = false;
+  let isUserPlaying = false;
   const audioElement = document.querySelector("audio");
 
-  // -------------------------------------
   // 画面のUI処理
-  // -------------------------------------
   const btnPlay = document.querySelector("#btnPlay");
   btnPlay.addEventListener("click", () => {
     // ユーザーの意思をもって再生したことを記録
@@ -22,32 +19,11 @@ export function useUi(onClickFirstPlay) {
 
   const btnStop = document.querySelector("#btnStop");
   btnStop.addEventListener("click", () => {
-    // ユーザーの意思をもって停止したことを記録
     isUserPlaying = false;
     stopSound();
   });
 
-  document.addEventListener('keypress',keypress_event)
-
-  let count = 0;
-  function keypress_event(e) {
-    if(e.code === 'Space'){
-      if(count % 2 == 0){
-        isUserPlaying = true;
-        playSound();
-        if (isInited === false) {
-          onClickFirstPlay();
-        }
-    
-        isInited = true;
-      }else if(count % 2 == 1){
-        isUserPlaying = false;
-        stopSound();
-      }
-    }
-    count ++;
-    return false; 
-  }
+  document.addEventListener('keypress',keypress_event);
 
   // タブの切り替えでサウンドのON/OFFを切りかえる
   document.addEventListener("visibilitychange", () => {
@@ -65,6 +41,25 @@ export function useUi(onClickFirstPlay) {
     }
   });
 
+  let count = 0;
+  function keypress_event(e) {
+  if(e.code === 'Space'){
+      if(count % 2 == 0){
+        isUserPlaying = true;
+        playSound();
+        if (isInited === false) {
+          onClickFirstPlay();
+        }
+    
+        isInited = true;
+      }else if(count % 2 == 1){
+        isUserPlaying = false;
+        stopSound();
+      }
+    }
+    count ++;
+    return false; 
+  }
   function playSound() {
     audioElement.play();
     btnPlay.style.display = "none";

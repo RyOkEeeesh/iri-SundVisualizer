@@ -67,6 +67,7 @@ body {
   height: 100%;
   border-radius: 7px;
   z-index: 5;
+  box-shadow: 0 0 8px black;
 }
 .box {
   flex: 1;
@@ -77,25 +78,23 @@ body {
 .annotation {
   position: absolute;
   width: 100%;
-  bottom: -70px;
+  height: 60px;
+  bottom: -60px;
   left: 50%;
   transform: translate(-50%, 0);
   -webkit-user-select: none;
   user-select: none;
-  pointer-events: none;
   z-index: 5;
-}
-audio{
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .annotation p {
   font-size: 2em;
   font-weight: bold;
   text-align: center;
   margin: 0;
+  pointer-events: none;
 }
 button {
   appearance: none;
@@ -157,3 +156,22 @@ button {
 #btnStop:hover {
   box-shadow: #f0f8ff 0px 0px 10px 0px, #f0f8ff7f 0px 0px 20px 0px;
 } */
+@media screen and (max-width:1600px) {
+  .album-container {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .container{
+    display: flex;
+    width: 127%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+    box-sizing: border-box;
+  }
+}

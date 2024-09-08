@@ -4,7 +4,7 @@ musicsToTmp();
 function musicsToTmp(){
 	for(let i=1;i<=40;i++){
 		const _i = i;
-		musics[_i-1] = "./audio/music ("+_i+").mp3";
+		musics[_i-1] = "../audio/music ("+_i+").mp3";
   }
 }
 function playAudio(j){
@@ -12,7 +12,7 @@ function playAudio(j){
   let = titleName = Object.keys(title)
   let n = musics.indexOf(rand_music[j])
   music_title.innerHTML = titleName[n];
-  let url = 'https://raw.githubusercontent.com/RyOkEeeesh/iri-SundVisualizer/7ad8972e9adf8d9d6f5077775df2f1d48bd35dc8/img/audio/'+title[titleName[n]]+'.jpg';
+  let url = '../img/audio/'+title[titleName[n]]+'.jpg';
   album.src = url;
   $('.wrap').css({"background-image": `url(${url})`,});
 }
@@ -33,7 +33,6 @@ function MakeRandMusics(){
     return Math.floor( Math.random() * (max - min + 1)) + min;
   }
 }
-
 const audio = document.querySelector('audio');
 const album = document.querySelector('#album')
 let rand_music = [];
@@ -54,7 +53,6 @@ if(j == musics.length){
   MakeRandMusics();
 }
 });
-
 // // 再生時間を取得
 // audio.addEventListener('timeupdate', function() {
 // 	console.log(audio.currentTime);
