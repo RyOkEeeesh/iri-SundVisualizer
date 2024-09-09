@@ -80,8 +80,25 @@ if(!window.localStorage){
     localStorage.setItem('time', JSON.stringify(audio.currentTime));
 });
   if(Boolean(track) == false){
-    resetTrack();
-  }else if(Boolean(track)){
+      removeStorage();
+      if(j == false){
+      MakeRandMusics();
+      playAudio(rand_music,j);
+      saveData(rand_music,j)
+      j++;
+    }
+    audio.addEventListener('ended', function() {
+    audio.autoplay = true;
+      playAudio(rand_music,j);
+    localStorage.setItem('trackNum', JSON.stringify(j));
+    j++;
+    if(j == musics.length){
+      j = 0;
+      MakeRandMusics();
+    }
+    });
+    }
+    else if(Boolean(track)){
     let trackNum = JSON.parse(localStorage.getItem('trackNum'));
     const playbackTime = JSON.parse(localStorage.getItem('time'));
     audio.currentTime = playbackTime;
