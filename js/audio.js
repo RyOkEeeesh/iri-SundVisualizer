@@ -57,6 +57,7 @@ if(j == musics.length){
 }
 });
 }
+window.addEventListener('load',function() {
 if(!window.localStorage){
   trackMusic();
 }else{
@@ -84,13 +85,14 @@ if(!window.localStorage){
     let trackNum = JSON.parse(localStorage.getItem('trackNum'));
     const playbackTime = JSON.parse(localStorage.getItem('time'));
     audio.currentTime = playbackTime;
-    if(trackNum < track.length){playAudio(track,trackNum);
+    if(trackNum < track.length){
     localStorage.setItem('trackNum', JSON.stringify(trackNum));
+    playAudio(track,trackNum);
     trackNum ++;
     audio.addEventListener('ended', function() {
     audio.autoplay = true;
-    playAudio(track,trackNum);
     localStorage.setItem('trackNum', JSON.stringify(trackNum));
+    playAudio(track,trackNum);
     trackNum++;
     });}
     else if(trackNum == track.length){
@@ -99,3 +101,4 @@ if(!window.localStorage){
     }
     }
 }
+});
