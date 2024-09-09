@@ -57,6 +57,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1px;
+  border-radius: 7px;
   box-sizing: border-box;
 }
 .album{
@@ -156,7 +157,7 @@ button {
 #btnStop:hover {
   box-shadow: #f0f8ff 0px 0px 10px 0px, #f0f8ff7f 0px 0px 20px 0px;
 } */
-@media screen and (max-width:1600px) {
+@media (max-width:1600px) {
   .album-container {
     width: 500px;
     height: 500px;
