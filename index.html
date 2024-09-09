@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/common.css" />
-    <title>Sound Visualizer</title>
-    <script type="module" src="./js/visualizer.js"></script>
-  </head>
-  <body>
-  <div class="wrap">
-    <div class="filter"></div>
-    <div class="album-container">
-      <div class="container-wrap">
-        <div class="container"></div>
-      </div>
-      <img src="" class="album" id="album" alt="album">
-      <div class="annotation">
-        <p id="music-title"></p>
-      </div>
-        <button id="btnPlay"><span class="btnPlay__span"></span></button>
-        <button id="btnStop" style="display: none;"><span class="btnStop__span"></span></button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/common.css" />
+  <title>Sound Visualizer</title>
+  <script type="module" src="./js/visualizer.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="filter"></div>
+  <div class="album-container">
+    <div class="container-wrap">
+      <div class="container"></div>
     </div>
+    <img src="" class="album" id="album" alt="album">
+    <div class="annotation"><p id="music-title"></p></div>
+      <button id="btnPlay"><span class="btnPlay__span"></span></button>
+      <button id="btnStop" style="display: none;"><span class="btnStop__span"></span></button>
   </div>
+</div>
 
-    <div class="audio-container">
-      <audio id="audio"></audio>
-    </div>
-    <script src="./js/audio.js"></script>
-  </body>
+  <div class="audio-container">
+    <audio id="audio"></audio>
+  </div>
+  <script src="./js/audio.js"></script>
+</body>
 </html>
